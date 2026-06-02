@@ -163,3 +163,11 @@ width:70px;
 }
 
 }
+footer{
+    margin-top:50px;
+    padding:20px;
+    text-align:center;
+    color:#94a3b8;
+    border-top:1px solid #1f2937;
+    font-size:0.9rem;
+}
