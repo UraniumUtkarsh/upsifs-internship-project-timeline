@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Project Journey Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+<h1>AI-Based Crime Pattern Analysis</h1>
+
+<p>Project Journey Dashboard</p>
+
+</header>
+
+<section class="overview">
+
+<div class="overview-card">
+
+<h3>Overall Progress</h3>
+
+<div class="main-progress">
+<div id="overallFill"></div>
+</div>
+
+<span id="overallPercent">0%</span>
+
+</div>
+
+<div class="overview-card">
+
+<h3>Current Phase</h3>
+
+<h2 id="currentPhase">Loading...</h2>
+
+</div>
+
+</section>
+
+<section class="timeline-wrapper">
+
+<div id="timeline"></div>
+
+</section>
+
+<section id="details">
+
+<div class="placeholder">
+
+Select a milestone to view details
+
+</div>
+
+</section>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
