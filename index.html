@@ -1,48 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Project Journey Dashboard - Maintenance</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Project Journey Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 </head>
+
 <body>
 
 <div class="container">
 
-    <!-- Header Kept Exactly As Requested -->
-    <header>
-        <h1>AI-Based Crime Pattern Analysis</h1>
-        <p>Project Journey Dashboard</p>
-    </header>
+<header>
 
-    <!-- Maintenance Content Section -->
-    <section class="maintenance-wrapper">
-        <div class="maintenance-card">
-            <div class="maintenance-icon">
-                <div class="gear-pulse"></div>
-                🔧
-            </div>
-            <h2>System Under Maintenance</h2>
-            <p>We are currently updating the dashboard to bring you advanced analytical features and real-time updates.</p>
-            
-            <hr class="divider">
-            
-            <div class="status-box">
-                <span class="status-indicator"></span>
-                <p><strong>Current Status:</strong> Database Optimization & UI Refresh in progress.</p>
-            </div>
-            
-            <p class="notice">We'll be back online shortly. Thank you for your patience!</p>
+    <h1>AI-Based Crime Pattern Analysis</h1>
+
+    <p>Project Journey Dashboard</p>
+
+</header>
+
+<section class="overview">
+
+    <div class="overview-card">
+
+        <h3>Overall Progress</h3>
+
+        <div class="main-progress">
+            <div id="overallFill"></div>
         </div>
-    </section>
+
+        <span id="overallPercent">0%</span>
+
+    </div>
+
+    <div class="overview-card">
+
+        <h3>Current Phase</h3>
+
+        <h2 id="currentPhase">Loading...</h2>
+
+    </div>
+
+</section>
+
+<section class="timeline-wrapper">
+
+    <div id="timeline"></div>
+
+</section>
+
+<section id="details">
+
+    <div class="placeholder">
+
+        Select a milestone to view details
+
+    </div>
+
+</section>
+
+<section class="pipeline-section">
+
+    <h2>Project Pipeline Status</h2>
+
+    <div class="pipeline-legend">
+
+        <span class="legend-item">
+            🟢 Completed
+        </span>
+
+        <span class="legend-item">
+            🟡 In Progress
+        </span>
+
+        <span class="legend-item">
+            ⚪ Pending
+        </span>
+
+        <span class="legend-item">
+            🔴 Blocked
+        </span>
+
+    </div>
+
+    <div id="pipelineGrid"></div>
+
+</section>
+
+<div id="pipelineDetails">
+
+    <div class="placeholder">
+
+        Select a pipeline stage to view details
+
+    </div>
 
 </div>
 
-<!-- Footer Kept Exactly As Requested -->
+</div>
+
 <footer>
     &copy; 2026 utkarshpandey.com
 </footer>
+
+<script src="app.js"></script>
 
 </body>
 </html>
