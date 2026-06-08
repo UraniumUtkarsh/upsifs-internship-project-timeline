@@ -29,7 +29,8 @@ function buildDashboard(data){
 
 function calculateProjectProgress(data){
 
-    const masterPipeline = [
+    const pipelineStages = [
+
         "Problem Definition",
         "Data Collection",
         "Data Understanding",
@@ -42,22 +43,37 @@ function calculateProjectProgress(data){
         "Visualization Dashboard",
         "Ethical AI Assessment",
         "Final Report & Presentation"
+
     ];
 
-    const completedPipelines = new Set();
+    let score = 0;
 
-    data.forEach(item => {
+    pipelineStages.forEach(stage => {
 
-        if(item.Status === "Completed"){
+        const row = data.find(
+            item => item.Pipeline === stage
+        );
 
-            completedPipelines.add(item.Pipeline);
+        if(!row) return;
+
+        const status =
+        row.Pipeline_Status?.trim();
+
+        if(status === "Completed"){
+
+            score += 1;
+
+        }
+        else if(status === "In Progress"){
+
+            score += 0.5;
 
         }
 
     });
 
     const percent = Math.round(
-        (completedPipelines.size / masterPipeline.length) * 100
+        (score / pipelineStages.length) * 100
     );
 
     document.getElementById(
@@ -258,27 +274,16 @@ function buildPipeline(data){
     const orderedPipelines = [
 
         "Problem Definition",
-
         "Data Collection",
-
         "Data Understanding",
-
         "Data Preprocessing",
-
         "Exploratory Data Analysis",
-
         "Feature Selection",
-
         "Model Development",
-
         "Model Evaluation",
-
         "Crime Prediction",
-
         "Visualization Dashboard",
-
         "Ethical AI Assessment",
-
         "Final Report & Presentation"
 
     ];
@@ -288,32 +293,29 @@ function buildPipeline(data){
         const tasks =
         pipelines[pipeline] || [];
 
-        let progress = 0;
-
-        if(tasks.length > 0){
-
-            const completed =
-            tasks.filter(
-                x => x.Status === "Completed"
-            ).length;
-
-            progress =
-            Math.round(
-                (completed / tasks.length) * 100
-            );
-
-        }
+        const stageStatus =
+        tasks[0]?.Pipeline_Status?.trim() ||
+        "Pending";
 
         let color = "gray";
+        let progress = 0;
 
-        if(progress === 100){
+        if(stageStatus === "Completed"){
 
             color = "green";
+            progress = 100;
 
         }
-        else if(progress > 0){
+        else if(stageStatus === "In Progress"){
 
             color = "orange";
+            progress = 50;
+
+        }
+        else if(stageStatus === "Blocked"){
+
+            color = "red";
+            progress = 100;
 
         }
 
@@ -333,7 +335,7 @@ function buildPipeline(data){
 
             <div>
 
-                ${progress}%
+                ${stageStatus}
 
             </div>
 
@@ -360,8 +362,10 @@ function buildPipeline(data){
                 <br>
 
                 <p>
-                    Progress:
-                    ${progress}%
+
+                    <strong>Status:</strong>
+                    ${stageStatus}
+
                 </p>
 
                 <br>
@@ -371,9 +375,11 @@ function buildPipeline(data){
             if(tasks.length === 0){
 
                 html += `
+
                     <p>
                     No activities logged yet.
                     </p>
+
                 `;
 
             } else {
@@ -399,7 +405,7 @@ function buildPipeline(data){
                         </p>
 
                         <p>
-                            <b>Status:</b>
+                            <b>Task Status:</b>
                             ${task.Status}
                         </p>
 

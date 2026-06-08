@@ -215,6 +215,26 @@ padding:20px;
 border-radius:12px;
 }
 
+.gray{
+background:#64748b;
+}
+
+.pipeline-fill.gray{
+background:#64748b;
+}
+
+.pipeline-fill.green{
+background:#10b981;
+}
+
+.pipeline-fill.orange{
+background:#f59e0b;
+}
+
+.pipeline-fill.red{
+background:#ef4444;
+}
+
 .green{
 background:#10b981;
 }
